@@ -70,3 +70,33 @@ ggplot(data = msleep, mapping = aes(x = bodywt, y = sleep_total, color = vore)) 
   scale_color_discrete(name = "Diet")+
   labs(x ="Body Weight", y = "Total Amount of Sleep")
 
+# Make boxplots 
+ggplot(data = msleep, mapping = aes(x= vore, y = sleep_total)) +
+  geom_boxplot()+
+  labs(y = "Sleep Total", x="Diet")
+
+# Add the scale of the values of the y axis
+ggplot(data = msleep, mapping = aes(x= vore, y = sleep_total)) +
+  geom_boxplot() +
+  scale_y_log10()+
+  labs(y = "Sleep Total", x="Diet")
+
+# Change the outlier shape 
+ggplot(data = msleep, mapping = aes(x= vore, y = sleep_total)) +
+  geom_boxplot()+
+  scale_y_log10()+
+  geom_boxplot(outlier.shape = 2)+
+  labs(y = "Sleep Total", x="Diet")
+
+# Add color scheme and the background(using colorblind safe palette)
+ggplot(data = msleep, mapping = aes(x= vore, y=sleep_total, fill = vore)) +
+  geom_boxplot()+
+  scale_y_log10()+
+  geom_boxplot(outlier.shape = 2)+
+  theme_bw()+
+  scale_fill_colorblind()+
+  theme(legend.position = "none")+
+  labs(y = "Sleep Total", x="Diet")
+
+
+
