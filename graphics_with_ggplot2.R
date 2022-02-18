@@ -98,5 +98,41 @@ ggplot(data = msleep, mapping = aes(x= vore, y=sleep_total, fill = vore)) +
   theme(legend.position = "none")+
   labs(y = "Sleep Total", x="Diet")
 
+# Facet
+ggplot(data = msleep, mapping = aes(x=bodywt, y=sleep_total))+
+  geom_point() +
+  scale_x_log10() + 
+  scale_y_log10() +
+  facet_wrap(~vore)+
+  labs(y = "Sleep Total", x="Body Weight")
 
+# Add title
+ggplot(data = msleep, mapping = aes(x = bodywt, y = sleep_total))+
+  geom_point() +
+  scale_x_log10() + 
+  scale_y_log10() +
+  facet_wrap(~vore)+ 
+  ggtitle("Sleep Total vs Body Weight by Diet(Logged Scales)")+
+  labs(y = "Sleep Total", x="Body Weight")
+
+# Add color of the lines 
+ggplot(data = msleep, mapping = aes(x = bodywt, y = sleep_total))+
+  geom_point() +
+  scale_x_log10() + 
+  scale_y_log10() +
+  facet_wrap(~vore)+
+  ggtitle("Sleep Total vs Body Weight by Diet(Logged Scales)")+
+  geom_smooth(se = FALSE, method = lm, linetype = "solid",color = "dark green")+
+  labs(y = "Sleep Total", x="Body Weight")
+
+# Add overall black and white theme
+ggplot(data = msleep, mapping = aes(x = bodywt, y = sleep_total))+
+  geom_point() +
+  scale_x_log10() + 
+  scale_y_log10() +
+  facet_wrap(~vore)+
+  ggtitle("Sleep Total vs Body Weight by Diet(Logged Scales)")+
+  geom_smooth(se = FALSE, method = lm, linetype = "solid",color = "dark green")+
+  theme_bw()+
+  labs(y = "Sleep Total", x="Body Weight")
 
